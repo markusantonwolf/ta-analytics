@@ -65,6 +65,4 @@ TA Gallery is released under the [MIT license](https://github.com/markusantonwol
 © 2020 Markus A. Wolf
 <https://www.markusantonwolf.com>
 
-<p align="center">
-  <img src="./public/img/logo-ta-styled-plugins.png" width="200px" />
-</p>
+<img src="./public/img/logo-ta-styled-plugins.png" width="160px" style="padding-top:4rem;" />
