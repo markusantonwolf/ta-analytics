@@ -1,0 +1,31 @@
+{
+  "name": "ta-analytics",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">   <img src=\"./public/assets/img/logo-ta-gallery.png\" width=\"400px\" /> </p>",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "develop": "npx gulp build",
+    "build": "NODE_ENV=production npx gulp build",
+    "serve": "npx gulp serve"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@fullhuman/postcss-purgecss": "^3.0.0",
+    "alpinejs": "^2.7.0",
+    "autoprefixer": "^9.8.6",
+    "cssnano": "^4.1.10",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-file-include": "^2.2.2",
+    "gulp-live-server": "0.0.31",
+    "gulp-minify": "^3.1.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-print": "^5.0.2",
+    "tailwindcss": "^1.8.10"
+  }
+}

@@ -1,0 +1,26 @@
+{
+    "css.validate": false,
+    "stylelint.enable": true,
+    "workbench.colorCustomizations": {
+        "activityBar.foreground": "#66cb1e",
+        "activityBarBadge.foreground": "#000",
+        "activityBarBadge.background": "#50a017"
+    },
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 120,
+    "editor.wrappingIndent": "indent",
+    "editor.formatOnPaste": false,
+    "debug.console.wordWrap": false,
+    "editor.tabSize": 4,
+    "html.format.contentUnformatted": "pre,code,textarea",
+    "html.format.endWithNewline": false,
+    "html.format.extraLiners": "head, body, /html",
+    "html.format.indentHandlebars": true,
+    "html.format.indentInnerHtml": true,
+    "html.format.maxPreserveNewLines": null,
+    "html.format.preserveNewLines": true,
+    "html.format.wrapLineLength": 180,
+    "html.format.wrapAttributes": "auto",
+    "files.insertFinalNewline": false,
+    "git.ignoreLimitWarning": true
+}

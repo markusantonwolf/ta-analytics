@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TA-Analytics</title>
+        <link href="/css/styles.css" rel="stylesheet" />
+        <script src="/js/alpine.min.js" defer></script>
+    </head>
+    <body class="bg-white font-sans leading-loose tracking-wide text-base text-gray-900 font-light hyphens antialiased">
+        <div class="flex flex-col min-h-screen">
+            <div class="flex-grow">
+                <div class="container mx-auto text-center text-xl font-light my-6">
+                    <div class="md:w-2/3 leading-normal text-xl font-normal mx-auto px-5 sm:px-2 mb-12">
+                        <h1 class="mx-auto w-1/2 my-8">
+                            <img src="/img/logo-ta-analytics.png" alt="Logo TA Analytics" class="w-full" />
+                        </h1>
+                        <p class="my-4">
+                            A light-weight, responsive and mobile first tracking accept dialog based for Google
+                            Analytics (GDPR - Cookie Consent) on Tailwind CSS and Alpine JS. 100% customizable and
+                            endless animation options. If you already use Tailwind CSS and Alpine JS in your project you
+                            might consider using this dialog.
+                        </p>
+                        <p class="my-4">
+                            <a
+                                class="inline-block text-pink-800 font-semibold hover:text-black hover:underline mx-2"
+                                href="https://api.craftplaces.com"
+                                target="_blank"
+                                >REAL LIVE</a
+                            >
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-center sm:border-2 border-gray-400 sm:rounded-lg p-4 sm:p-20">
+                        <div
+    class="w-full text-gray-900 font-normal leading-snug"
+    x-data="taAnalytics()"
+    x-init="init({id: 'XXXXXXXX', store: 'storage', name:'ta-analytics', test: true})"
+    x-show="show"
+    x-cloak
+>
+    <div
+        class="w-full max-w-4xl bg-indigo-200 rounded-md shadow-lg border-2 border-indigo-300 border-opacity-75 px-8 py-4"
+    >
+        <template x-if="!confirmed">
+            <div class="flex items-center flex-col sm:flex-row">
+                <div class="w-full sm:w-3/4 text-center sm:text-left">
+                    We use cookies to measure the range of this website so we can easily see how many visitors are on
+                    our pages. This helps us a lot to further improve our services and adapt it more to your needs.
+                </div>
+                <div class="text-center w-full sm:w-1/4 m-4">
+                    <button
+                        type="button"
+                        class="inline-flex font-black rounded-full leading-none text-white bg-pink-600 border-2 border-pink-700 shadow-lg text-sm m-2 px-8 py-4 transition transform duration-300 ease-in-out hover:scale-110"
+                        @click="accept()"
+                    >
+                        OK
+                    </button>
+                    <button
+                        type="button"
+                        class="inline-flex font-black rounded-full leading-none text-pink-600 bg-white rounded-full text-xs text-white font-bold m-2 px-4 py-2"
+                        @click="decline()"
+                    >
+                        Decline
+                    </button>
+                </div>
+            </div>
+        </template>
+        <template x-if="confirmed">
+            <div
+                class="text-2xl text-center font-normal leading-snug"
+                x-transition:enter="transition ease-out duration-500"
+                x-transition:enter-start="opacity-0 transform scale-75"
+                x-transition:enter-end="opacity-100 transform scale-100"
+            >
+                Thank you for your support...
+            </div>
+        </template>
+    </div>
+</div>
+<style>
+    [x-cloak] {
+        display: none;
+    }
+</style>
+
+                    </div>
+                </div>
+            </div>
+            <div class="w-full bg-gray-200">
+                <div class="max-w-2xl w-full lg:w-1/2 leading-normal text-xl font-light mx-auto py-12 px-8">
+                    <div class="mx-auto w-1/2 my-8">
+                        <img src="/img/logo-ta-styled-plugins.png" alt="Logo TA StyledPLUGINS" class="w-full" />
+                    </div>
+                    <p class="pb-4">
+                        TA StylesPLUGINS stands for light-weight, responsive and mobile first. All plugins are based on
+                        Tailwind CSS and Alpine JS. All are 100% customizable with endless animation options.
+                    </p>
+                    <p class="pb-4">
+                        <a
+                            href="https://github.com/markusantonwolf/ta-gallery"
+                            target="_blank"
+                            class="text-pink-800 hover:text-black hover:underline font-semibold"
+                            >TA-Gallery</a
+                        >
+                        - An image gallery with endless animation options.
+                    </p>
+                    <p class="pb-4">
+                        <a
+                            href="https://github.com/markusantonwolf/ta-pagination"
+                            target="_blank"
+                            class="text-pink-800 hover:text-black hover:underline font-semibold"
+                            >TA-Pagination</a
+                        >
+                        - An content pagination solution with endless animation options.
+                    </p>
+                    <p class="pb-4">
+                        <a
+                            href="https://github.com/markusantonwolf/ta-youtube"
+                            target="_blank"
+                            class="text-pink-800 hover:text-black hover:underline font-semibold"
+                            >TA-YouTube</a
+                        >
+                        - A YouTube video wrapper with auto playback and aspect ratio for the video player.
+                    </p>
+                    <p class="pb-4">
+                        <a
+                            href="https://github.com/markusantonwolf/ta-footrucks"
+                            target="_blank"
+                            class="text-pink-800 hover:text-black hover:underline font-semibold"
+                            >TA-Foodtrucks</a
+                        >
+                        - A plugin to show foodtruck and street food dates for cities, locations and vendors.
+                    </p>
+                </div>
+            </div>
+            <div class="bg-blue-900 text-white font-bold">
+                <div class="container mx-auto py-6 text-center">
+                    <p class="text-xs mx-2">
+                        Licensed under the MIT license, see
+                        <a href="https://github.com/markusantonwolf/ta-analytics/blob/master/licence.md" target="_blank"
+                            >LICENSE.md</a
+                        >
+                        for details.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <script src="/js/ta-analytics.js"></script>
+    </body>
+</html>
