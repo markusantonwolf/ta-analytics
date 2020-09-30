@@ -1,0 +1,45 @@
+{
+    "source": {
+        "styles": "./src/styles/styles.css",
+        "plugin_js": ["./src/scripts/ta-*.js"],
+        "plugin_css": "./src/styles/ta-analytics.css",
+        "views": ["./src/views/index.html"],
+        "snippets": "./src/styles/*.css",
+        "alpine_js": ["./node_modules/alpinejs/dist/alpine.js"],
+        "plugin_alpine_js": ["./node_modules/alpinejs/dist/alpine.js", "./dist/scripts/ta-analytics.js"]
+    },
+    "name": {
+        "alpine_js": "alpine.js",
+        "plugin_js": "ta-analytics.js",
+        "plugin_alpine_js": "alpine-ta-analytics.js"
+    },
+    "purge": {
+        "styles": ["./src/views/*.html"],
+        "plugin": ["./src/snippets/*.html"]
+    },
+    "destination": {
+        "styles": "./dist/styles",
+        "views": "./dist/views",
+        "plugin_css": "./dist/styles",
+        "alpine_js": "./dist/scripts",
+        "plugin_js": "./dist/scripts",
+        "plugin_alpine_js": "./dist/scripts"
+    },
+    "distribution": {
+        "styles": ["./dist/styles/**/*.css"],
+        "scripts": ["./dist/scripts/**/*.js"],
+        "views": ["./dist/views/index.html"]
+    },
+    "public": {
+        "styles": "./public/css",
+        "scripts": "./public/js",
+        "views": "./public"
+    },
+    "watch": {
+        "styles": "./src/styles/*.css",
+        "scripts": "./src/scripts/*.js",
+        "views": "./src/views/*.html",
+        "snippets": "./src/snippets/*.html"
+    },
+    "clean": ["./dist", "./public/index.html", "./public/css", "./public/js"]
+}

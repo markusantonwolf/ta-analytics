@@ -1,9 +1,12 @@
+const config = require('config')
 const { src } = require('gulp')
 const clean = require('gulp-clean')
 
+const CLEAN = config.get('clean')
+
 module.exports.clean = () => {
-    return src(['./dist', './public/index.html', './public/css', './public/js'], {
+    return src(CLEAN, {
         read: false,
-        allowEmpty: true
+        allowEmpty: true,
     }).pipe(clean())
 }

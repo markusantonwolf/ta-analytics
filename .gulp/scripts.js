@@ -1,13 +1,24 @@
+const config = require('config')
 const { src, dest, parallel, series } = require('gulp')
 const concat = require('gulp-concat')
 const babel = require('gulp-babel')
 const minify = require('gulp-minify')
 
-const SCRIPTS_DESTINATION = './dist/scripts'
+const SOURCE_ALPINE = config.get('source.alpine_js')
+const NAME_ALPINE = config.get('name.alpine_js')
+const DESTINATION_ALPINE = config.get('destination.alpine_js')
+
+const SOURCE_PLUGIN_JS = config.get('source.plugin_js')
+const NAME_PLUGIN_JS = config.get('name.plugin_js')
+const DESTINATION_PLUGIN_JS = config.get('destination.plugin_js')
+
+const SOURCE_PLUGIN_ALPINE_JS = config.get('source.plugin_alpine_js')
+const NAME_PLUGIN_ALPINE_JS = config.get('name.plugin_alpine_js')
+const DESTINATION_PLUGIN_ALPINE_JS = config.get('destination.plugin_alpine_js')
 
 const alpine_js = () => {
-    return src(['./node_modules/alpinejs/dist/alpine.js'])
-        .pipe(concat('alpine.js'))
+    return src(SOURCE_ALPINE)
+        .pipe(concat(NAME_ALPINE))
         .pipe(
             minify({
                 ext: {
@@ -16,16 +27,16 @@ const alpine_js = () => {
                 ignoreFiles: ['.min.js'],
             })
         )
-        .pipe(dest(SCRIPTS_DESTINATION))
+        .pipe(dest(DESTINATION_ALPINE))
 }
 const ta_script = () => {
-    return src(['./src/scripts/ta-*.js'])
+    return src(SOURCE_PLUGIN_JS)
         .pipe(
             babel({
                 presets: ['@babel/env'],
             })
         )
-        .pipe(concat('ta-analytics.js'))
+        .pipe(concat(NAME_PLUGIN_JS))
         .pipe(
             minify({
                 ext: {
@@ -34,11 +45,11 @@ const ta_script = () => {
                 ignoreFiles: ['.min.js'],
             })
         )
-        .pipe(dest(SCRIPTS_DESTINATION))
+        .pipe(dest(DESTINATION_PLUGIN_JS))
 }
 const ta_script_alpine = () => {
-    return src(['./node_modules/alpinejs/dist/alpine.js', './dist/scripts/ta-analytics.js'])
-        .pipe(concat('alpine-ta-analytics.js'))
+    return src(SOURCE_PLUGIN_ALPINE_JS)
+        .pipe(concat(NAME_PLUGIN_ALPINE_JS))
         .pipe(
             minify({
                 ext: {
@@ -47,7 +58,7 @@ const ta_script_alpine = () => {
                 ignoreFiles: ['.min.js'],
             })
         )
-        .pipe(dest(SCRIPTS_DESTINATION))
+        .pipe(dest(DESTINATION_PLUGIN_ALPINE_JS))
 }
 
 module.exports.scripts = series(parallel(alpine_js, ta_script), ta_script_alpine)
