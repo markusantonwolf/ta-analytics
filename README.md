@@ -29,12 +29,30 @@ You can see a real world example on this page: <https://api.craftplaces.com>
 - Alpine JS + TA-Analytics bundle size: 29.3 kByte
 - Use of Alpine JS and Tailwind CSS
 
-## More TA StyledPlugins
+## CDN
 
-- [TA Gallery](https://github.com/markusantonwolf/ta-gallery) - An image gallery with endless animation options.
-- [TA Pagination](https://github.com/markusantonwolf/ta-pagination) - A content pagination solution
-- [TA Youtube](https://github.com/markusantonwolf/ta-youtube) - A YouTube video wrapper with auto playback and aspect ratio for the video player
-- [TA Foodtrucks](https://github.com/markusantonwolf/ta-foodtrucks) - A plugin to show foodtruck and street food dates for cities, locations and vendors
+### TA-Analytics
+
+```html
+<script src="https://cdn.jsdelivr.net/gh/markusantonwolf/ta-analytics@latest/dist/scripts/ta-analytics.min.js"></script>
+```
+
+### Alpine JS + TA-Analytics
+
+```html
+<script
+    src="https://cdn.jsdelivr.net/gh/markusantonwolf/ta-analytics@latest/dist/scripts/alpine-ta-analytics.min.js"
+    defer
+></script>
+```
+
+## All TA StyledPlugins
+
+-   [TA-Gallery](https://github.com/markusantonwolf/ta-gallery) - An image gallery with endless animation options.
+-   [TA-Pagination](https://github.com/markusantonwolf/ta-pagination) - A content pagination solution.
+-   [TA-Youtube](https://github.com/markusantonwolf/ta-youtube) - A YouTube video wrapper with auto playback and aspect ratio for the video player.
+-   [TA-Analytics](https://github.com/markusantonwolf/ta-analytics) - A plugin for every website that needs to have an easy and customizable Google Analytics “blocker”.
+-   [TA-Foodtrucks](https://github.com/markusantonwolf/ta-foodtrucks) - A plugin to show the next food truck and street food dates in your area.
 
 ## Local development
 
@@ -58,7 +76,7 @@ npm run build
 
 ## Licence
 
-TA Gallery is released under the [MIT license](https://github.com/markusantonwolf/ta-gallery/blob/master/licence.md) & supports modern environments.
+TA Analytics is released under the [MIT license](https://github.com/markusantonwolf/ta-gallery/blob/master/licence.md) & supports modern environments.
 
 ## Copyright
 
