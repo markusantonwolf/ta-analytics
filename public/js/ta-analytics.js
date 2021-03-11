@@ -17,13 +17,15 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 window.taAnalytics = function () {
   return {
     show: false,
+    dialog: false,
     status: false,
     confirmed: false,
     options: {
       id: '',
-      name: 'exeptedAnalytics',
+      name: 'taAnalyticsStorage',
       question: 'question',
       confirmed: 'confirmed',
+      declined: 'declined',
       anonymize_ip: true,
       send_page_view: true,
       store: 'cookie',
@@ -58,11 +60,17 @@ window.taAnalytics = function () {
         }
       }
 
+      this.options.test = String(this.options.test).toLowerCase() === 'true';
+      this.options.anonymize_ip = String(this.options.anonymize_ip).toLowerCase() === 'true';
+      this.options.send_page_view = String(this.options.send_page_view).toLowerCase() === 'true';
+      this.options.delay = parseInt(this.options.delay);
+      this.options.days = parseInt(this.options.days);
       this.loadStatus();
       this.initAnimations();
 
       if (this.status === null) {
         this.status = false;
+        this.dialog = true;
         this.show = true;
         return;
       }
@@ -74,19 +82,9 @@ window.taAnalytics = function () {
       this.loadGoogleTagmanager();
     },
     accept: function accept() {
-      var _this = this;
-
       this.saveStatus(true);
       this.loadGoogleTagmanager();
       this.confirmed = true;
-
-      if (this.options.delay > 0) {
-        setTimeout(function () {
-          _this.show = false;
-        }, this.options.delay);
-      } else {
-        this.show = false;
-      }
 
       if (typeof this.$refs[this.options.question] !== 'undefined') {
         this.$refs[this.options.question].classList.remove('ta-analytics-anim-init');
@@ -96,10 +94,34 @@ window.taAnalytics = function () {
       if (typeof this.$refs[this.options.confirmed] !== 'undefined') {
         this.$refs[this.options.confirmed].classList.add('ta-analytics-anim-in');
       }
+
+      this.hide();
     },
     decline: function decline() {
+      if (typeof this.$refs[this.options.question] !== 'undefined') {
+        this.$refs[this.options.question].classList.remove('ta-analytics-anim-init');
+        this.$refs[this.options.question].classList.add('ta-analytics-anim-out');
+      }
+
+      if (typeof this.$refs[this.options.declined] !== 'undefined') {
+        this.$refs[this.options.declined].classList.add('ta-analytics-anim-in');
+      }
+
       this.saveStatus(false);
-      this.show = false;
+      this.hide();
+    },
+    hide: function hide() {
+      var _this = this;
+
+      this.dialog = false;
+
+      if (this.options.delay > 0) {
+        setTimeout(function () {
+          _this.show = false;
+        }, this.options.delay);
+      } else {
+        this.show = false;
+      }
     },
     initAnimations: function initAnimations() {
       if (typeof this.$refs[this.options.question] !== 'undefined') {
@@ -133,7 +155,7 @@ window.taAnalytics = function () {
       this.status = status === 'true';
     },
     saveStatus: function saveStatus(value) {
-      if (this.options.test === 'true') {
+      if (this.options.test === true) {
         console.info('TA Analytics is running in test mode - no data will be stored');
         return;
       }

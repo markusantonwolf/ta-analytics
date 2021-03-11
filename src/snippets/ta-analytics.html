@@ -1,48 +1,50 @@
 <div
-    class="ta-analytics ta-analytics-top ta-analytics-anim-flip p-2"
+    class="ta-analytics ta-analytics-anim-fade p-2"
     x-data="taAnalytics()"
-    x-init="init()"
-    data-delay="500000"
+    x-init="init({id: 'XXXXXXXX'})"
+    data-delay="5000"
     data-store="storage"
     data-test="true"
-    data-id="XXXXXXXX"
     x-cloak
 >
     <div class="w-full" x-show="show">
         <div
-            class="w-full flex justify-center items-center bg-teal-500 text-white font-normal leading-snug rounded-md shadow-lg px-8 py-4"
-            x-show="!confirmed"
+            class="w-full flex justify-center items-center bg-blue-500 bg-gradient-to-t from-blue-600 to-blue-400 text-white font-normal leading-snug rounded-md shadow-lg px-8 py-4"
+            x-show="dialog"
             x-ref="question"
         >
             <div class="w-full sm:w-3/4 text-center sm:text-left">
                 We use cookies to measure the range of this website so we can easily see how many visitors are on our
-                pages. This helps us a lot to further improve our services and adapt it more to your needs.
+            pages. This helps us a lot to further improve our services and adapt it more to your needs.
             </div>
             <div class="flex flex-col items-center w-full sm:w-1/4 m-4">
                 <button
                     type="button"
-                    class="font-bold rounded-full leading-none text-white bg-red-600 border-2 border-red-600 shadow-lg text-md m-2 px-6 py-3 transition transform duration-300 ease-in-out hover:scale-110"
+                    class="font-bold text-xl rounded-xl leading-none text-white bg-red bg-gradient-to-t from-red-600 to-red-400 border-2 border-primary shadow-lg text-md m-2 px-6 py-3 transition transform duration-300 ease-in-out hover:scale-110"
                     @click="accept()"
                 >
-                    Ok
+                    OK
                 </button>
-                <button type="button" class="font-semibold leading-none text-xs text-white m-2 p-2" @click="decline()">
-                    Decline
+                <button
+                    type="button"
+                    class="font-semibold leading-none text-xs text-white m-2 p-2"
+                    @click="decline()"
+                >
+                Decline
                 </button>
             </div>
         </div>
         <div
-            class="w-full flex justify-center items-center bg-teal-500 text-white font-normal leading-snug rounded-md shadow-lg px-8 py-4"
-            x-show="confirmed"
+            class="w-full flex justify-center items-center bg-blue-500 bg-gradient-to-t from-blue-600 to-blue-400 text-white font-normal leading-snug rounded-md shadow-lg px-8 py-4"
+            x-show="!dialog && confirmed"
             x-ref="confirmed"
         >
             <div class="text-2xl text-center font-normal leading-snug">Thank you for your support...</div>
         </div>
-    </div>
-    <div
-        class="w-full flex justify-center items-center bg-teal-500 text-white font-normal leading-snug rounded-md shadow-lg px-8 py-4 transform translate-y-6"
-        x-show="!show"
-    >
-        <div class="text-2xl text-center font-normal leading-snug">Well, we have to deal with your decision...</div>
+        <div class="w-full flex justify-center items-center bg-blue-500 bg-gradient-to-t from-blue-600 to-blue-400 text-white font-normal leading-snug rounded-md shadow-lg px-8 py-4" x-show="!dialog && !confirmed" x-ref="declined">
+            <div class="text-2xl text-center font-normal leading-snug">
+                Well, we have to deal with your decision...
+            </div>
+        </div>
     </div>
 </div>
