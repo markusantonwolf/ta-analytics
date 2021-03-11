@@ -1,0 +1,46 @@
+<div
+    class="w-full text-gray-900 font-normal leading-snug"
+    x-data="taAnalytics()"
+    x-init="init({id: 'XXXXXXXX', store: 'storage', name:'ta-analytics', test: true})"
+    x-show="show"
+    x-cloak
+>
+    <div
+        class="w-full max-w-4xl bg-indigo-200 rounded-md shadow-lg border-2 border-indigo-300 border-opacity-75 px-8 py-4"
+    >
+        <template x-if="!confirmed">
+            <div class="flex items-center flex-col sm:flex-row">
+                <div class="w-full sm:w-3/4 text-center sm:text-left">
+                    We use cookies to measure the range of this website so we can easily see how many visitors are on
+                    our pages. This helps us a lot to further improve our services and adapt it more to your needs.
+                </div>
+                <div class="text-center w-full sm:w-1/4 m-4">
+                    <button
+                        type="button"
+                        class="inline-flex font-black rounded-full leading-none text-white bg-pink-600 border-2 border-pink-700 shadow-lg text-md m-2 px-6 py-3 transition transform duration-300 ease-in-out hover:scale-110"
+                        @click="accept()"
+                    >
+                        OK
+                    </button>
+                    <button
+                        type="button"
+                        class="inline-flex font-bold rounded-full leading-none bg-white text-xs text-pink-600 m-2 px-4 py-2"
+                        @click="decline()"
+                    >
+                        Decline
+                    </button>
+                </div>
+            </div>
+        </template>
+        <template x-if="confirmed">
+            <div
+                class="text-2xl text-center font-normal leading-snug"
+                x-transition:enter="transition ease-out duration-500"
+                x-transition:enter-start="opacity-0 transform scale-75"
+                x-transition:enter-end="opacity-100 transform scale-100"
+            >
+                Thank you for your support...
+            </div>
+        </template>
+    </div>
+</div>

@@ -19,9 +19,11 @@ window.taAnalytics = function () {
     show: false,
     status: false,
     confirmed: false,
-    "default": {
+    options: {
       id: '',
-      name: 'ta-analytics',
+      name: 'exeptedAnalytics',
+      question: 'question',
+      confirmed: 'confirmed',
       anonymize_ip: true,
       send_page_view: true,
       store: 'cookie',
@@ -33,7 +35,7 @@ window.taAnalytics = function () {
     init: function init(options) {
       if (typeof options !== 'undefined') {
         if (_typeof(options) !== 'object' || options instanceof Array) {
-          console.warn('Options are in wrong type - should be object - default options will be used');
+          console.warn('TA-Analytics: Options are in wrong type - should be object - default options will be used');
         }
 
         for (var _i = 0, _Object$entries = Object.entries(options); _i < _Object$entries.length; _i++) {
@@ -41,20 +43,32 @@ window.taAnalytics = function () {
               key = _Object$entries$_i[0],
               value = _Object$entries$_i[1];
 
-          this["default"][key] = value;
+          this.options[key] = value;
+        }
+      } // checks if options are defined by data
+
+
+      for (var _i2 = 0, _Object$entries2 = Object.entries(this.$el.dataset); _i2 < _Object$entries2.length; _i2++) {
+        var _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2),
+            _key = _Object$entries2$_i[0],
+            _value = _Object$entries2$_i[1];
+
+        if (typeof this.options[_key] !== 'undefined') {
+          this.options[_key] = _value;
         }
       }
 
       this.loadStatus();
+      this.initAnimations();
 
       if (this.status === null) {
         this.status = false;
         this.show = true;
-        return true;
+        return;
       }
 
       if (this.status === false) {
-        return false;
+        return;
       }
 
       this.loadGoogleTagmanager();
@@ -66,25 +80,49 @@ window.taAnalytics = function () {
       this.loadGoogleTagmanager();
       this.confirmed = true;
 
-      if (this["default"].delay > 0) {
+      if (this.options.delay > 0) {
         setTimeout(function () {
           _this.show = false;
-        }, this["default"].delay);
+        }, this.options.delay);
       } else {
         this.show = false;
+      }
+
+      if (typeof this.$refs[this.options.question] !== 'undefined') {
+        this.$refs[this.options.question].classList.remove('ta-analytics-anim-init');
+        this.$refs[this.options.question].classList.add('ta-analytics-anim-out');
+      }
+
+      if (typeof this.$refs[this.options.confirmed] !== 'undefined') {
+        this.$refs[this.options.confirmed].classList.add('ta-analytics-anim-in');
       }
     },
     decline: function decline() {
       this.saveStatus(false);
       this.show = false;
     },
+    initAnimations: function initAnimations() {
+      if (typeof this.$refs[this.options.question] !== 'undefined') {
+        this.$refs[this.options.question].classList.add('ta-analytics-anim', 'ta-analytics-anim-init'); // not yet implemented
+        // this.$refs[this.options.question].addEventListener("animationend", (event) => {
+        //     console.info('animationend', event.animationName);
+        // });
+      }
+
+      if (typeof this.$refs[this.options.confirmed] !== 'undefined') {
+        this.$refs[this.options.confirmed].classList.add('ta-analytics-anim'); // not yet implemented
+        // this.$refs[this.options.confirmed].addEventListener("animationend", (event) => {
+        //     console.info('animationend', event.animationName);
+        // });
+      }
+    },
     loadStatus: function loadStatus() {
       var status = null;
 
-      if (this["default"].store === 'cookie') {
-        status = this.getCookie(this["default"].name);
+      if (this.options.store === 'cookie') {
+        status = this.getCookie(this.options.name);
       } else {
-        status = localStorage.getItem(this["default"].name);
+        status = localStorage.getItem(this.options.name);
       }
 
       if (status === null) {
@@ -95,19 +133,19 @@ window.taAnalytics = function () {
       this.status = status === 'true';
     },
     saveStatus: function saveStatus(value) {
-      if (this["default"].test === true) {
-        console.info('TA Analytics is running in test mode - not data will be stored');
+      if (this.options.test === 'true') {
+        console.info('TA Analytics is running in test mode - no data will be stored');
         return;
       }
 
       this.status = value;
 
-      if (this["default"].store === 'cookie') {
-        this.setCookie(this["default"].name, value, this["default"].days);
+      if (this.options.store === 'cookie') {
+        this.setCookie(this.options.name, value, this.options.days);
         return;
       }
 
-      localStorage.setItem(this["default"].name, value);
+      localStorage.setItem(this.options.name, value);
     },
     getCookie: function getCookie(name) {
       var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
@@ -130,11 +168,11 @@ window.taAnalytics = function () {
         _this2.callGoogleTagManager();
       };
 
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + this["default"].id;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + this.options.id;
       head.appendChild(script);
     },
     callGoogleTagManager: function callGoogleTagManager() {
-      console.info(this["default"].message);
+      console.info(this.options.message);
       window.dataLayer = window.dataLayer || [];
 
       function gtag() {
@@ -142,9 +180,9 @@ window.taAnalytics = function () {
       }
 
       gtag('js', new Date());
-      gtag('config', this["default"].id, {
-        anonymize_ip: this["default"].anonymize_ip,
-        send_page_view: this["default"].send_page_view
+      gtag('config', this.options.id, {
+        anonymize_ip: this.options.anonymize_ip,
+        send_page_view: this.options.send_page_view
       });
     }
   };

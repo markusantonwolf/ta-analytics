@@ -2,6 +2,7 @@ const config = require('config')
 const { src, dest, parallel } = require('gulp')
 const postcss = require('gulp-postcss')
 const purgecss = require('@fullhuman/postcss-purgecss')
+const concat = require('gulp-concat');
 
 const SOURCE_STYLES = config.get('source.styles')
 const DESTINATION_STYLES = config.get('destination.styles')
@@ -16,12 +17,6 @@ const styles_styles = () => {
     const postcssOptions = [require('tailwindcss'), require('autoprefixer')]
     if (process.env.NODE_ENV === 'production') {
         postcssOptions.push(
-            purgecss({
-                content: PURGE_STYLES,
-                defaultExtractor: (content) => content.match(/[\w-/.:]+(?<!:)/g) || [],
-            })
-        )
-        postcssOptions.push(
             require('cssnano')({
                 preset: 'default',
             })
@@ -30,21 +25,18 @@ const styles_styles = () => {
     return src(SOURCE_STYLES).pipe(postcss(postcssOptions)).pipe(dest(DESTINATION_STYLES))
 }
 const styles_taAnalytics = () => {
-    const postcssOptions = [require('tailwindcss'), require('autoprefixer')]
+    const postcssOptions = [require('autoprefixer')]
     if (process.env.NODE_ENV === 'production') {
-        postcssOptions.push(
-            purgecss({
-                content: PURGE_PLUGIN,
-                defaultExtractor: (content) => content.match(/[\w-/.:]+(?<!:)/g) || [],
-            })
-        )
         postcssOptions.push(
             require('cssnano')({
                 preset: 'default',
             })
         )
     }
-    return src(SOURCE_PLUGIN_CSS).pipe(postcss(postcssOptions)).pipe(dest(DESTINATION_STYLES_CSS))
+    return src(SOURCE_PLUGIN_CSS)
+        .pipe(postcss(postcssOptions))
+        .pipe(concat('ta-analytics.css'))
+        .pipe(dest(DESTINATION_STYLES_CSS))
 }
 
 module.exports.styles = parallel(styles_styles, styles_taAnalytics)

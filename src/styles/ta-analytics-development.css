@@ -1,0 +1,133 @@
+.ta-analytics {
+	--ta-analytics-anim-duration: 0.3s;
+	display: flex;
+	position: absolute;
+	justify-content: center;
+	align-items: center;
+	left: var(--ta-analytics-left, 0px);
+	right: var(--ta-analytics-right, 0px);
+	bottom: var(--ta-analytics-bottom, 0px);
+	top: var(--ta-analytics-top, auto);
+	width: 100%;
+	height: auto;
+	perspective: 1000px;
+	perspective-origin: center center;
+}
+
+.ta-analytics-top {
+	top: var(--ta-analytics-top, 0px);
+	bottom: auto;
+	width: 100%;
+	height: auto;
+}
+
+.ta-analytics-left {
+	top: 0px;
+	right: auto;
+	left: var(--ta-analytics-left, 0px);
+	bottom: 0px;
+	width: auto;
+	height: 100%;
+}
+
+.ta-analytics-right {
+	top: 0px;
+	bottom: 0px;
+	left: auto;
+	right: var(--ta-analytics-right, 0px);
+	width: auto;
+	height: 100%;
+}
+
+.ta-analytics-anim {
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: both;
+	animation-duration: var(--ta-analytics-anim-duration);
+	transform-origin: center center;
+	backface-visibility: hidden;
+}
+
+.ta-analytics-anim-swipe {
+	--ta-analytics-anim-in: ta-analytics-swipe-in;
+	--ta-analytics-anim-out: ta-analytics-swipe-out;
+}
+
+.ta-analytics-anim-fade {
+	--ta-analytics-anim-in: ta-analytics-fade-in;
+	--ta-analytics-anim-out: ta-analytics-fade-out;
+}
+
+.ta-analytics-anim-flip {
+    transform-origin: bottom;
+	--ta-analytics-anim-in: ta-analytics-flip-in;
+	--ta-analytics-anim-out: ta-analytics-flip-out;
+}
+
+.ta-analytics-anim-init {
+	animation-name: var(--ta-analytics-anim-in);
+	animation-delay: 0s;
+	animation-duration: calc(var(--ta-analytics-anim-duration) * 2);
+}
+
+.ta-analytics-anim-in {
+	animation-name: var(--ta-analytics-anim-in);
+	animation-delay: calc(var(--ta-analytics-anim-duration) / 2);
+}
+
+.ta-analytics-anim-out {
+	animation-name: var(--ta-analytics-anim-out);
+	animation-delay: 0s;
+}
+
+@keyframes ta-analytics-swipe-in {
+	from: 	{
+		opacity: 0;
+		transform: scale(0.9) translateY(20px) translateZ(-100px);
+	}
+;
+	to: 	{
+		opacity: 1;
+		transform: scale(1) translateY(0px) translateZ(0px);
+	}
+;
+}
+
+@keyframes ta-analytics-swipe-out {
+	from: 	{
+		opacity: 1;
+		transform: scale(1) translateY(20px) translateZ(-100px);
+	}
+;
+	to: 	{
+		opacity: 0;
+		transform: scale(0.9) translateY(20px) translateZ(-100px);
+	}
+;
+}
+
+@keyframes ta-analytics-fade-in {
+	from: 	{
+		opacity: 0;
+		transform: scale(0.95);
+	}
+;
+	to: 	{
+		opacity: 1;
+		transform: scale(1);
+	}
+;
+}
+
+@keyframes ta-analytics-fade-out {
+	from: 	{
+		opacity: 1;
+		transform: scale(1);
+	}
+;
+	to: 	{
+		opacity: 0;
+		transform: scale(0.95);
+	}
+;
+}
+
