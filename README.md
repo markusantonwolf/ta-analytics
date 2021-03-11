@@ -10,7 +10,7 @@ TA-Analytics is 100% customizable and has endless animation options. You can use
 
 ## Demo
 
-[REALWORLD](https://api.craftplaces.com)
+If you want to take a quick look: [CodePen](https://codepen.io/markus-a-wolf/pen/xxRmgLd?editors=1100)
 
 You can see a real world example on this page: <https://api.craftplaces.com>
 
