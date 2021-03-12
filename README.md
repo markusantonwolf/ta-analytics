@@ -10,7 +10,7 @@ TA-Analytics is 100% customizable and has endless animation options. You can use
 
 ## Demo
 
-If you want to take a quick look: [CodePen](https://codepen.io/markus-a-wolf/pen/xxRmgLd?editors=1100)
+If you want to take a quick look: [CodePen](https://codepen.io/markus-a-wolf/pen/xxRmgLd)
 
 You can see a real world example on this page: <https://api.craftplaces.com>
 
@@ -34,14 +34,14 @@ You can see a real world example on this page: <https://api.craftplaces.com>
 ### TA-Analytics
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/markusantonwolf/ta-analytics@latest/dist/scripts/ta-analytics.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/markusantonwolf/ta-analytics@1.1/dist/ta-analytics.min.js"></script>
 ```
 
 ### Alpine JS + TA-Analytics
 
 ```html
 <script
-    src="https://cdn.jsdelivr.net/gh/markusantonwolf/ta-analytics@latest/dist/scripts/alpine-ta-analytics.min.js"
+    src="https://cdn.jsdelivr.net/gh/markusantonwolf/ta-analytics@1.1/dist/alpine-ta-analytics.min.js"
     defer
 ></script>
 ```
