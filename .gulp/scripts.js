@@ -8,6 +8,7 @@ const SOURCE_ALPINE = config.get('source.alpine_js')
 const NAME_ALPINE = config.get('name.alpine_js')
 const DESTINATION_ALPINE = config.get('destination.alpine_js')
 
+const SOURCE_SAFELIST = config.get('source.safelist')
 const SOURCE_PLUGIN_JS = config.get('source.plugin_js')
 const NAME_PLUGIN_JS = config.get('name.plugin_js')
 const DESTINATION_PLUGIN_JS = config.get('destination.plugin_js')
@@ -15,6 +16,7 @@ const DESTINATION_PLUGIN_JS = config.get('destination.plugin_js')
 const SOURCE_PLUGIN_ALPINE_JS = config.get('source.plugin_alpine_js')
 const NAME_PLUGIN_ALPINE_JS = config.get('name.plugin_alpine_js')
 const DESTINATION_PLUGIN_ALPINE_JS = config.get('destination.plugin_alpine_js')
+const DESTINATION_SCRIPTS = config.get('destination.scripts')
 
 const alpine_js = () => {
     return src(SOURCE_ALPINE)
@@ -60,5 +62,17 @@ const ta_script_alpine = () => {
         )
         .pipe(dest(DESTINATION_PLUGIN_ALPINE_JS))
 }
+const ta_script_safelist = () => {
+    return src(SOURCE_SAFELIST)
+        .pipe(
+            minify({
+                ext: {
+                    min: '.js',
+                },
+                ignoreFiles: ['.min.js'],
+            })
+        )
+        .pipe(dest(DESTINATION_SCRIPTS))
+}
 
-module.exports.scripts = series(parallel(alpine_js, ta_script), ta_script_alpine)
+module.exports.scripts = series(parallel(alpine_js, ta_script, ta_script_safelist), ta_script_alpine)

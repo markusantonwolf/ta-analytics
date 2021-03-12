@@ -35,7 +35,7 @@ const styles_taAnalytics = () => {
     }
     return src(SOURCE_PLUGIN_CSS)
         .pipe(postcss(postcssOptions))
-        .pipe(concat('ta-analytics.css'))
+        .pipe(concat('ta-analytics.min.css'))
         .pipe(dest(DESTINATION_STYLES_CSS))
 }
 
