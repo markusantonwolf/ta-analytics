@@ -2,61 +2,35 @@
   <img src="./public/img/logo-ta-analytics.png" width="400px" />
 </p>
 
-# TA-Analytics
+# **TA-Analytics** - Customizable Google Analytics “blocker”
 
-TA-Analytics was made for every website that needs to have an easy and customizable Google Analytics “blocker”. This is in particular interesting for people targeting customers in Europe. TA-Analytics only loads the Google Tag Manager after the user confirms to tracking scripts.
+**TA-Analytics is a Alpine JS based plugin for activating user tracking after confirmation. The Google Tag Manager only gets initialized after the user accepts tracking.**
 
-TA-Analytics is 100% customizable and has endless animation options. You can use TA-Analytics as a stand-alone version as well as a part of your Alpine JS and Tailwind CSS project. TA-Analytics is designed to fit in every project, in every grid and in every flexbox so please try it out and if you have some feedback - leave me a message: @markusantonwolf / Twitter
+## Demos, Documentation and Examples
 
-## Demo
+[Documentation](https://ta-styled-plugins.com/ta-analytics/)
 
-If you want to take a quick look: [CodePen](https://codepen.io/markus-a-wolf/pen/xxRmgLd)
+[Getting started](https://ta-styled-plugins.com/ta-analytics/#getting-started-with-ta-analytics)
 
-You can see a real world example on this page: <https://api.craftplaces.com>
+[Example](https://ta-styled-plugins.com/ta-analytics/)
+
+[Configuration](https://ta-styled-plugins.com/ta-analytics/#configuration)
 
 ## Features
 
-- Loads Google Analytics only after confirmation
-- Localstorage and cookies are supported
-- Anonymize ip address supported
-- Feedback after confirmation
-- Testmode and thank you message in console
-- Auto hide after optional milliseconds
-- Thank you message in console
-- Tailwind animations are available
-- All options are customizable!!!
-- Small file size JS + CSS: 7.4 kByte
-- Alpine JS + TA-Analytics bundle size: 29.3 kByte
-- Use of Alpine JS and Tailwind CSS
+-   Confirmation only - Loads Google Analytics only after user confirmation
+-   Stores users choice - Remembers the users choice for revisiting
+-   Anonymize IP - Anonymized IP address by default
+-   Based on Alpine JS - Small footprint and Vue JS inspired, like Tailwind for JavaScript
+-   100% Tailwind CSS - Rapidly build modern websites without leaving your HTML
 
-## CDN
+## More TA-Styled-Plugins
 
-### TA-Analytics
-
-```html
-<script src="https://cdn.jsdelivr.net/gh/markusantonwolf/ta-analytics@1.1/dist/ta-analytics.min.js"></script>
-```
-
-### Alpine JS + TA-Analytics
-
-```html
-<script
-    src="https://cdn.jsdelivr.net/gh/markusantonwolf/ta-analytics@1.1/dist/alpine-ta-analytics.min.js"
-    defer
-></script>
-```
-
-## All TA StyledPlugins
-
--   [TA-Gallery](https://github.com/markusantonwolf/ta-gallery) - An image gallery with endless animation options.
--   [TA-Pagination](https://github.com/markusantonwolf/ta-pagination) - A content pagination solution.
--   [TA-Youtube](https://github.com/markusantonwolf/ta-youtube) - A YouTube video wrapper with auto playback and aspect ratio for the video player.
--   [TA-Analytics](https://github.com/markusantonwolf/ta-analytics) - A plugin for every website that needs to have an easy and customizable Google Analytics “blocker”.
--   [TA-Foodtrucks](https://github.com/markusantonwolf/ta-foodtrucks) - A plugin to show the next food truck and street food dates in your area.
+-   [TA-Styled-Plugins](https://ta-styled-plugins.com/) - Explore all Tailwind CSS and Alpine JS styled plugins and learn how to enhance your website fast and easy.
 
 ## Local development
 
-```
+```bash
 // To install dev dependencies run:
 
 npm install
@@ -80,7 +54,9 @@ TA Analytics is released under the [MIT license](https://github.com/markusantonw
 
 ## Copyright
 
-© 2020 Markus A. Wolf
+© 2021 Markus A. Wolf
 <https://www.markusantonwolf.com>
 
+<p>
 <img src="./public/img/logo-ta-styled-plugins.png" width="160px" style="display:block;padding-top:4rem;" />
+</p>
